@@ -1,0 +1,19 @@
+{
+  "name": "node_yt-downloader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "downloader.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Grewather",
+  "license": "MIT",
+  "dependencies": {
+    "@nodegui/nodegui": "^0.54.0",
+    "@nodegui/qode": "^16.4.1",
+    "ytdl-core": "^4.11.0"
+  },
+  "devDependencies": {
+    "@nodegui/packer": "^1.5.0"
+  }
+}
