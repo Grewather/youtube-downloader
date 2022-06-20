@@ -1,5 +1,8 @@
 # youtube-downloader
 simple youtube downloader made in node.js
+
+![image](https://user-images.githubusercontent.com/69985703/174576586-89c58416-44a4-4f1c-9712-37caa9e3cdf5.png)
+
 ## Stack
 * nodejs
 * nodegui
