@@ -18,7 +18,7 @@ npm i ytdl-core
 
 ## Usage
 
-Run project using "npx qode downloader.js" command
+Run project using ```"npx qode downloader.js"``` command
 
 ## License
 Project is distributed under the mit license
