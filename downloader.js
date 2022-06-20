@@ -45,6 +45,14 @@ msgFailed.setWindowTitle("Error");
 const accept = new QPushButton();
 accept.setText("ok");
 msgFailed.addButton(accept, ButtonRole.AcceptRole);
+
+const msgWork = new QMessageBox();
+msgWork.setText("video downloaded");
+msgWork.setWindowTitle("info");
+const ok = new QPushButton();
+ok.setText("ok");
+msgWork.addButton(accept, ButtonRole.AcceptRole);
+
 const buttonMp4 = new QPushButton();
 buttonMp4.setText("Download mp4");
 buttonMp4.addEventListener("clicked", () => {
@@ -91,9 +99,14 @@ buttonWebm.setInlineStyle(`background-color: #4A442d; align-items:
 "flex-end"; padding: 30px;`);
 function downloadMp4(url) {
   if (ytdl.validateURL(url) === true) {
-    ytdl(url, { format: "mp4" }).pipe(
-      fs.createWriteStream("./downloads/video.mp4")
-    );
+    ytdl.getInfo(url).then((info) => {
+      console.log("title:", info.videoDetails.title);
+      let parseInfo = info.videoDetails.title.replace(`/`, "");
+      ytdl(url, { format: "mp4" }).pipe(
+        fs.createWriteStream(`./downloads/${parseInfo}.mp4`)
+      );
+      msgWork.exec();
+    });
   } else {
     msgFailed.exec();
   }
@@ -101,9 +114,14 @@ function downloadMp4(url) {
 
 function downloadWebm(url) {
   if (ytdl.validateURL(url) === true) {
-    ytdl(url, { format: "webm" }).pipe(
-      fs.createWriteStream("./downloads/video.webm")
-    );
+    ytdl.getInfo(url).then((info) => {
+      console.log("title:", info.videoDetails.title);
+      let parseInfo = info.videoDetails.title.replace(`/`, "");
+      ytdl(url, { format: "webm" }).pipe(
+        fs.createWriteStream(`./downloads/${parseInfo}.webm`)
+      );
+      msgWork.exec();
+    });
   } else {
     msgFailed.exec();
   }
